@@ -43,7 +43,7 @@ function App() {
   }
 
   // useStateを使っているので_pokemonDataがpokemonDataとして出力される。
-  console.log(pokemonData);
+  // console.log(pokemonData);
 
   return (
     <div className="App">
@@ -56,6 +56,7 @@ function App() {
           <div className='pokemonCardContainer'>
             {/* ポケモン詳細データをmap関数で回してCard.jsに値を渡す iはindexのi */}
             {pokemonData.map((pokemon, i) => {
+              // console.log(pokemon);
               return <Card pokemon={pokemon} key={i} />
             })}
           </div>

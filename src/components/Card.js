@@ -2,9 +2,39 @@ import React from 'react'
 
 
 // カード形式で表示させるためCard.jsでコンポーネントを作成
-const Card = (pokemon) => {
+// {}で囲むことによってpokemonの配列のみ取得することができる。
+const Card = ({ pokemon }) => {
+
     return (
-        <div>pokemon</div>
+        <div className='card'>
+            <div className='card-img'>
+                {/* 画像出力 */}
+                <img src={pokemon.sprites.front_default} alt='' />
+            </div>
+            <h3 className='cardName'>{pokemon.name}</h3>
+            <div className="cardType">
+                <div>タイプ</div>
+                {/* タイプは複数あるポケモンもいるのでmap関数で回して持っているタイプ分取得する。 */}
+                {pokemon.types.map((type) => {
+                    return (
+                        <div>
+                            <span className="typeName">{type.type.name}</span>
+                        </div>
+                    );
+                })}
+            </div>
+            <div className="cardInfo">
+                <div className="cardData">
+                    <p className="title">重さ : {pokemon.weight}</p>
+                </div>
+                <div className="cardData">
+                    <p className="title">高さ : {pokemon.height}</p>
+                </div>
+                <div className="cardData">
+                    <p className="title">アビリティ : {pokemon.abilities[0].ability.name}</p>
+                </div>
+            </div>
+        </div>
     )
 }
 
