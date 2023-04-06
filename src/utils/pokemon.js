@@ -4,10 +4,14 @@ export const getAllPokemon = (url) => {
     return new Promise((resolve, reject) => {
         // fetchでurlを取得
         fetch(url)
-        // プロミスチェーンを用いて.thenで値を受け渡すことができる
-        // 取得したurlをjson形式で返す↓
+            // プロミスチェーンを用いて.thenで値を受け渡すことができる
+            // 取得したurlをjson形式で返す↓
             .then((res) => res.json())
             // resを受け取りresolveに渡してreturn 
             .then((data) => resolve(data));
     })
 }
+
+export const getPokemon = () => {
+
+};

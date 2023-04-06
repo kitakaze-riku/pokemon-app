@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import './App.css';
-import { getAllPokemon } from './utils/pokemon';
+import { getAllPokemon, getPokemon } from './utils/pokemon';
 
 function App() {
 
@@ -17,14 +17,27 @@ function App() {
     const fetchPokemonData = async () => {
       // 全てのポケモンデータを取得
       let res = await getAllPokemon(initialURL);
-      console.log(res);
+
+      // 12.各ポケモンの詳細データを取得
+      loadPokemon(res.results);
+
       //11.ポケモンデータが取得できたらloadingのstateをfalseに切り替える
       setLoading(false);
     }
 
     fetchPokemonData();
-
   }, []);
+
+  // 各ポケモンの詳細データが必要なのでjsonデータをもっと細かく分けるための関数
+  const loadPokemon = (data) => {
+    let _pokemonData = Promise.all(
+      data.map((pokemon) => {
+        let pokemonRecord = getPokemon(pokemon.url);
+        return pokemonRecord;
+      })
+    );
+
+  }
 
   return (
     <div className="App">
