@@ -7,6 +7,8 @@ function App() {
 
   // エンドポイント
   const initialURL = "https://pokeapi.co/api/v2/pokemon";
+
+  //11.useStateを使ってloadingのbooleanをtrueにしておく。
   const [loading, setLoading] = useState(true);
 
   // ブラウザをリロードしたらポケモンを取得したいのでuseEffect
@@ -16,6 +18,7 @@ function App() {
       // 全てのポケモンデータを取得
       let res = await getAllPokemon(initialURL);
       console.log(res);
+      //11.ポケモンデータが取得できたらloadingのstateをfalseに切り替える
       setLoading(false);
     }
 
@@ -25,7 +28,8 @@ function App() {
 
   return (
     <div className="App">
-      test
+
+      {/* もしsetLoadingの値がtrueなら『ロード中・・・』falseなら『ポケモンデータを取得しました。』と表示させる。 */}
       {loading ? (
         <h1>ロード中・・・</h1>
       ) : (
