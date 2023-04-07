@@ -7,7 +7,7 @@ const Card = ({ pokemon }) => {
 
     return (
         <div className='card'>
-            <div className='card-img'>
+            <div className='card-Img'>
                 {/* 画像出力 */}
                 <img src={pokemon.sprites.front_default} alt='' />
             </div>
